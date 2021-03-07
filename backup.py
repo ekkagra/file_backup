@@ -32,7 +32,7 @@ def get_dirs():
         for dirr in dir_names: 
             f.write(str(dirr)+'\n')
 
-exclude_list = [r'\.git', 'e[0-9]+', 'env[0-9]+','dlib','face_recogni',r'\.pyc']
+exclude_list = [r'\.git', 'e[0-9]+', 'env[0-9]+','dlib','face_recogni',r'\.pyc','Anaconda3','AppData','.lnk','OneDrive']
 exclude_list_re = [re.compile(ele) for ele in exclude_list]
 
 def calc_hash(filepath):
@@ -125,7 +125,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-t',dest='target_dir',help='Target directory which needs to be backed up')
-    parser.add_argument('-b',dest='backup_dir',help='Backup directory root',required=True)
+    parser.add_argument('-b',dest='backup_dir',help='Backup directory root')
     parser.add_argument('-f',dest='backup_manifest',help='Backup Hash file')
     args = parser.parse_args()
     args=vars(args)
