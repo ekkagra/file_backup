@@ -1,4 +1,6 @@
 import os
+import re
+r1 = re.compile(r"^[A-z]:(/|\\)$")
 
 def split_path(pth):
 	pth1 = pth.replace('\\','/')
@@ -10,6 +12,9 @@ def split_path(pth):
 		out.append(child)
 		if parent == "/" or parent == "":
 			keep_running = False
+		elif r1.match(parent):
+			keep_running = False
+			out.append(parent)
 		else:
 			p = parent
 	return out[::-1], file
