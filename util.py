@@ -34,3 +34,19 @@ def convert_paths_to_dict(inp_list):
 			current_dict = current_dict[root]
 		current_dict["_files"].append(file)
 	return res
+
+
+if __name__ == '__main__':
+	import sys
+	import json
+	try:
+		input_file = sys.argv[1]
+		with open(input_file) as f:
+			contents = f.readlines()
+
+		print(contents[:10])
+		out_dict = convert_paths_to_dict(contents)
+		with open(f"{input_file}_dict.json", 'w') as f:
+			json.dump(out_dict, f, indent=4)
+	except Exception:
+		pass
